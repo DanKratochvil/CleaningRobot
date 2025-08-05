@@ -1,0 +1,27 @@
+2025-08-05 14:27:44.140 +00:00 [INF] Robot position:X:3,Y:0,Facing:N
+2025-08-05 14:27:44.181 +00:00 [INF] Robot position:X:3,Y:0,Facing:W
+2025-08-05 14:27:44.182 +00:00 [INF] Robot position:X:2,Y:0,Facing:W
+2025-08-05 14:27:44.183 +00:00 [INF] Robot cleaned cell at:X:2,Y:0,Facing:W
+2025-08-05 14:27:44.183 +00:00 [INF] Robot position:X:1,Y:0,Facing:W
+2025-08-05 14:27:44.183 +00:00 [INF] Robot cleaned cell at:X:1,Y:0,Facing:W
+2025-08-05 14:27:44.183 +00:00 [INF] Robot position:X:1,Y:0,Facing:N
+2025-08-05 14:27:44.184 +00:00 [INF] Robot hit wall at:X:1,Y:0,Facing:N
+2025-08-05 14:27:44.185 +00:00 [INF] Robot BackOffStrategy Step0 Cmd0 TR position:X:1,Y:0,Facing:E
+2025-08-05 14:27:44.185 +00:00 [INF] Robot BackOffStrategy Step0 Cmd1 A position:X:2,Y:0,Facing:E
+2025-08-05 14:27:44.185 +00:00 [INF] Robot BackOffStrategy Step0 Cmd2 TL position:X:2,Y:0,Facing:N
+2025-08-05 14:27:44.185 +00:00 [INF] Robot cleaned cell at:X:2,Y:0,Facing:N
+2025-08-05 14:28:20.653 +00:00 [INF] Robot position:X:3,Y:1,Facing:S
+2025-08-05 14:28:20.694 +00:00 [INF] Robot position:X:3,Y:1,Facing:W
+2025-08-05 14:28:20.695 +00:00 [INF] Robot hit wall at:X:3,Y:1,Facing:W
+2025-08-05 14:28:20.697 +00:00 [INF] Robot BackOffStrategy Step0 Cmd0 TR position:X:3,Y:1,Facing:N
+2025-08-05 14:28:20.697 +00:00 [INF] Robot BackOffStrategy Step0 Cmd1 A position:X:3,Y:0,Facing:N
+2025-08-05 14:28:20.697 +00:00 [INF] Robot BackOffStrategy Step0 Cmd2 TL position:X:3,Y:0,Facing:W
+2025-08-05 14:28:20.698 +00:00 [INF] Robot cleaned cell at:X:3,Y:0,Facing:W
+2025-08-05 14:28:20.699 +00:00 [INF] Robot position:X:2,Y:0,Facing:W
+2025-08-05 14:28:20.699 +00:00 [INF] Robot cleaned cell at:X:2,Y:0,Facing:W
+2025-08-05 14:28:20.699 +00:00 [INF] Robot position:X:2,Y:0,Facing:N
+2025-08-05 14:28:20.699 +00:00 [INF] Robot hit wall at:X:2,Y:0,Facing:N
+2025-08-05 14:28:20.699 +00:00 [INF] Robot BackOffStrategy Step0 Cmd0 TR position:X:2,Y:0,Facing:E
+2025-08-05 14:28:20.699 +00:00 [INF] Robot BackOffStrategy Step0 Cmd1 A position:X:3,Y:0,Facing:E
+2025-08-05 14:28:20.700 +00:00 [INF] Robot BackOffStrategy Step0 Cmd2 TL position:X:3,Y:0,Facing:N
+2025-08-05 14:28:20.700 +00:00 [INF] Robot cleaned cell at:X:3,Y:0,Facing:N
