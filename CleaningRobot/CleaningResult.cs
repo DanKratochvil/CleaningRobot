@@ -7,22 +7,21 @@
         public RobotPosition Final { get; set; }
         public int Battery { get; set; }
 
-        private HashSet<string> visitedPositions;
-        private HashSet<string> cleanedPositions;
+        private HashSet<Cell> visitedPositions;
+        private HashSet<Cell> cleanedPositions;
 
         public CleaningResult()
         {
             Visited = new List<Cell>();
             Cleaned = new List<Cell>();
             Final = new RobotPosition();
-            visitedPositions = new HashSet<string>();
-            cleanedPositions = new HashSet<string>();
+            visitedPositions = new HashSet<Cell>();
+            cleanedPositions = new HashSet<Cell>();
         }
 
         public bool AddVisited(Cell cell)
         {
-            string key = $"{cell.X},{cell.Y}";
-            if (visitedPositions.Add(key))
+            if (visitedPositions.Add(cell))
             {
                 Visited.Add(cell);
                 return true;
@@ -32,8 +31,7 @@
 
         public bool AddCleaned(Cell cell)
         {
-            string key = $"{cell.X},{cell.Y}";
-            if (cleanedPositions.Add(key))
+            if (cleanedPositions.Add(cell))
             {
                 Cleaned.Add(cell);
                 return true;
@@ -42,7 +40,7 @@
         }
     }
 
-    public class Cell
+    public class Cell : IEquatable<Cell>
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -51,6 +49,22 @@
         {
             this.X = robotPos.X;
             this.Y = robotPos.Y;
+        }
+
+        public bool Equals(Cell? other)
+        {
+            if (other == null) return false;
+            return X == other.X && Y == other.Y;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return Equals(obj as Cell);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
         }
     }
 }

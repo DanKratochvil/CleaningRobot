@@ -52,3 +52,36 @@
 2025-08-05 14:33:53.564 +00:00 [INF] Robot BackOffStrategy Step0 Cmd1 A position:X:3,Y:0,Facing:E
 2025-08-05 14:33:53.564 +00:00 [INF] Robot BackOffStrategy Step0 Cmd2 TL position:X:3,Y:0,Facing:N
 2025-08-05 14:33:53.564 +00:00 [INF] Robot cleaned cell at:X:3,Y:0,Facing:N
+2025-08-05 14:34:51.007 +00:00 [ERR] Start position is outside the map bounds
+2025-08-05 14:35:15.098 +00:00 [ERR] All map rows must have the same length
+2025-08-05 14:37:23.695 +00:00 [INF] Starting cleaning at position X:3, Y:0, Facing:N with 80 battery
+2025-08-05 14:37:23.738 +00:00 [INF] Robot position X:3, Y:0, Facing:W, Battery remaining: 79
+2025-08-05 14:37:23.740 +00:00 [INF] Robot position X:2, Y:0, Facing:W, Battery remaining: 77
+2025-08-05 14:37:23.740 +00:00 [INF] Robot cleaned cell at X:2, Y:0, Facing:W, Battery remaining: 72
+2025-08-05 14:37:23.741 +00:00 [INF] Robot position X:1, Y:0, Facing:W, Battery remaining: 70
+2025-08-05 14:37:23.741 +00:00 [INF] Robot cleaned cell at X:1, Y:0, Facing:W, Battery remaining: 65
+2025-08-05 14:37:23.741 +00:00 [INF] Robot position X:1, Y:0, Facing:N, Battery remaining: 64
+2025-08-05 14:37:23.742 +00:00 [INF] Robot hit obstacle at target X:1, Y:-1 while at X:1, Y:0, Facing:N
+2025-08-05 14:37:23.742 +00:00 [INF] Robot BackOffStrategy Step0, Command0: TR, Position X:1, Y:0, Facing:E, Battery: 61
+2025-08-05 14:37:23.743 +00:00 [INF] Robot BackOffStrategy Step0, Command1: A, Position X:2, Y:0, Facing:E, Battery: 59
+2025-08-05 14:37:23.743 +00:00 [INF] Robot BackOffStrategy Step0, Command2: TL, Position X:2, Y:0, Facing:N, Battery: 58
+2025-08-05 14:37:23.743 +00:00 [INF] Robot cleaned cell at X:2, Y:0, Facing:N, Battery remaining: 53
+2025-08-05 14:37:23.743 +00:00 [INF] Cleaning completed. Final position X:2, Y:0, Facing:N
+2025-08-05 14:37:23.743 +00:00 [INF] Visited 3 cells, cleaned 2 cells, battery remaining: 53
+2025-08-05 14:37:47.483 +00:00 [INF] Starting cleaning at position X:3, Y:1, Facing:S with 1094 battery
+2025-08-05 14:37:47.527 +00:00 [INF] Robot position X:3, Y:1, Facing:W, Battery remaining: 1093
+2025-08-05 14:37:47.528 +00:00 [INF] Robot hit obstacle at target X:2, Y:1 while at X:3, Y:1, Facing:W
+2025-08-05 14:37:47.529 +00:00 [INF] Robot BackOffStrategy Step0, Command0: TR, Position X:3, Y:1, Facing:N, Battery: 1090
+2025-08-05 14:37:47.529 +00:00 [INF] Robot BackOffStrategy Step0, Command1: A, Position X:3, Y:0, Facing:N, Battery: 1088
+2025-08-05 14:37:47.529 +00:00 [INF] Robot BackOffStrategy Step0, Command2: TL, Position X:3, Y:0, Facing:W, Battery: 1087
+2025-08-05 14:37:47.529 +00:00 [INF] Robot cleaned cell at X:3, Y:0, Facing:W, Battery remaining: 1082
+2025-08-05 14:37:47.530 +00:00 [INF] Robot position X:2, Y:0, Facing:W, Battery remaining: 1080
+2025-08-05 14:37:47.530 +00:00 [INF] Robot cleaned cell at X:2, Y:0, Facing:W, Battery remaining: 1075
+2025-08-05 14:37:47.530 +00:00 [INF] Robot position X:2, Y:0, Facing:N, Battery remaining: 1074
+2025-08-05 14:37:47.531 +00:00 [INF] Robot hit obstacle at target X:2, Y:-1 while at X:2, Y:0, Facing:N
+2025-08-05 14:37:47.531 +00:00 [INF] Robot BackOffStrategy Step0, Command0: TR, Position X:2, Y:0, Facing:E, Battery: 1071
+2025-08-05 14:37:47.531 +00:00 [INF] Robot BackOffStrategy Step0, Command1: A, Position X:3, Y:0, Facing:E, Battery: 1069
+2025-08-05 14:37:47.531 +00:00 [INF] Robot BackOffStrategy Step0, Command2: TL, Position X:3, Y:0, Facing:N, Battery: 1068
+2025-08-05 14:37:47.531 +00:00 [INF] Robot cleaned cell at X:3, Y:0, Facing:N, Battery remaining: 1063
+2025-08-05 14:37:47.532 +00:00 [INF] Cleaning completed. Final position X:3, Y:0, Facing:N
+2025-08-05 14:37:47.532 +00:00 [INF] Visited 3 cells, cleaned 2 cells, battery remaining: 1063

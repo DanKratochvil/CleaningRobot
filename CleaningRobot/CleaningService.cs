@@ -30,17 +30,22 @@ namespace CleaningRobot
         /// <returns>CleaningResult</returns>
         public CleaningResult CleanRoom()
         {            
-            logger.LogInformation($"Robot position:X:{robotPos.X},Y:{robotPos.Y},Facing:{robotPos.Facing}");
+            logger.LogInformation($"Starting cleaning at position X:{robotPos.X}, Y:{robotPos.Y}, Facing:{robotPos.Facing} with {battery} battery");
 
             while (commands.Count > 0)
             {
                 Command command = commands.Dequeue();
+                logger.LogDebug($"Executing command: {command}, Battery: {battery}, Commands remaining: {commands.Count}");
+                
                 var robotCommand = new RobotCommand(robotPos, command, cleaningResult, map, battery);
                 (RobotPosition? nextPos, battery) = robotCommand.ExecuteCommand();
                 if (nextPos != null && ObstacleHit(nextPos))     //nextPos !=null only in case of Advance or Back Command when robot changes cell and wall can be hit
                 {
                     if (!BackOffStrategy())
+                    {
+                        logger.LogWarning("Back-off strategy failed. Stopping execution.");
                         break;
+                    }
                 }
                 else
                 {
@@ -52,14 +57,17 @@ namespace CleaningRobot
                     }
 
                     if (command == Command.C)
-                        logger.LogInformation($"Robot cleaned cell at:X:{robotPos.X},Y:{robotPos.Y},Facing:{robotPos.Facing}");
+                        logger.LogInformation($"Robot cleaned cell at X:{robotPos.X}, Y:{robotPos.Y}, Facing:{robotPos.Facing}, Battery remaining: {battery}");
                     else
-                        logger.LogInformation($"Robot position:X:{robotPos.X},Y:{robotPos.Y},Facing:{robotPos.Facing}");
+                        logger.LogInformation($"Robot position X:{robotPos.X}, Y:{robotPos.Y}, Facing:{robotPos.Facing}, Battery remaining: {battery}");
                 }
             }
 
             cleaningResult.Final = robotPos;
             cleaningResult.Battery = battery;
+
+            logger.LogInformation($"Cleaning completed. Final position X:{robotPos.X}, Y:{robotPos.Y}, Facing:{robotPos.Facing}");
+            logger.LogInformation($"Visited {cleaningResult.Visited.Count} cells, cleaned {cleaningResult.Cleaned.Count} cells, battery remaining: {battery}");
 
             return cleaningResult;
         }
@@ -93,7 +101,7 @@ namespace CleaningRobot
                             cleaningResult.AddVisited(cell);
                         }
                     }
-                    logger.LogInformation($"Robot BackOffStrategy Step{backOffStrategyStepNo} Cmd{i} {command} position:X:{robotPos.X},Y:{robotPos.Y},Facing:{robotPos.Facing}");
+                    logger.LogInformation($"Robot BackOffStrategy Step{backOffStrategyStepNo}, Command{i}: {command}, Position X:{robotPos.X}, Y:{robotPos.Y}, Facing:{robotPos.Facing}, Battery: {battery}");
                 }
 
                 //if one of the stepps e.g. [TR,A,TL] succeeds, the rest stepps are dropped  
@@ -108,7 +116,7 @@ namespace CleaningRobot
         {
             if (nextPos.X < 0 || nextPos.Y < 0 || nextPos.Y >= map.Count() || nextPos.X >= map[0].Count() || map[nextPos.Y][nextPos.X] == CellStatus.C || map[nextPos.Y][nextPos.X] == CellStatus.W)
             {
-                logger.LogInformation($"Robot hit wall at:X:{robotPos.X},Y:{robotPos.Y},Facing:{robotPos.Facing}");
+                logger.LogInformation($"Robot hit obstacle at target X:{nextPos.X}, Y:{nextPos.Y} while at X:{robotPos.X}, Y:{robotPos.Y}, Facing:{robotPos.Facing}");
                 return true;
             }
             else

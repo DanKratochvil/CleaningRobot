@@ -9,14 +9,21 @@ namespace CleaningRobot
         {
             try
             {
+                if (!File.Exists(inputFileName))
+                    throw new FileNotFoundException($"Input file not found: {inputFileName}");
+
                 string cleaningInfoContent = File.ReadAllText(inputFileName);
                 cleaningInfoContent = cleaningInfoContent.Replace("null", "W");     //wall is W in map
-                var cleaningInfo = JsonConvert.DeserializeObject<CleaningInfo>(cleaningInfoContent) ?? throw new Exception("Failed to read CleaningInfo");
+                var cleaningInfo = JsonConvert.DeserializeObject<CleaningInfo>(cleaningInfoContent) ?? throw new InvalidOperationException("Failed to deserialize CleaningInfo - file content may be invalid");
                 
                 // Validate input data
                 ValidateCleaningInfo(cleaningInfo);
                 
                 return cleaningInfo;
+            }
+            catch (JsonException ex)
+            {
+                throw new ArgumentException($"Invalid JSON format in input file: {ex.Message}", ex);
             }
             catch (Exception)
             {
