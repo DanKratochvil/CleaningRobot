@@ -19,7 +19,7 @@ namespace CleaningRobot
             this.commands = new Queue<Command>(cleaningInfo.Commands);
             this.map = cleaningInfo.Map;
             this.cleaningResult = new CleaningResult();
-            this.cleaningResult.Visited.Push(new Cell(robotPos));
+            this.cleaningResult.AddVisited(new Cell(robotPos));
             this.backOffStrategy = InitBackOffStrategy();
             this.logger = logger;
         }
@@ -48,8 +48,7 @@ namespace CleaningRobot
                     {
                         robotPos = new RobotPosition(nextPos);
                         Cell cell = new Cell(robotPos);
-                        if (cleaningResult.Visited.All(c => c.X != cell.X || c.Y != cell.Y))   //when cell was visited more times, it appears only once in result 
-                            cleaningResult.Visited.Push(cell);
+                        cleaningResult.AddVisited(cell);
                     }
 
                     if (command == Command.C)
@@ -91,8 +90,7 @@ namespace CleaningRobot
                         {
                             robotPos = new RobotPosition(nextPos);
                             Cell cell = new Cell(robotPos);
-                            if (cleaningResult.Visited.All(c => c.X != cell.X || c.Y != cell.Y))
-                                cleaningResult.Visited.Push(cell);
+                            cleaningResult.AddVisited(cell);
                         }
                     }
                     logger.LogInformation($"Robot BackOffStrategy Step{backOffStrategyStepNo} Cmd{i} {command} position:X:{robotPos.X},Y:{robotPos.Y},Facing:{robotPos.Facing}");
@@ -123,7 +121,7 @@ namespace CleaningRobot
             {
                 new List<Command>(){Command.TR, Command.A, Command.TL},
                 new List<Command>(){Command.TR, Command.A, Command.TR},
-                new List<Command>(){Command.TR, Command.A, Command.TR},
+                new List<Command>(){Command.TL, Command.A, Command.TL},
                 new List<Command>(){Command.TR, Command.B, Command.TR, Command.A },
                 new List<Command>(){Command.TL, Command.TL, Command.A}
             };

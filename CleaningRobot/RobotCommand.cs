@@ -2,11 +2,15 @@
 {
     public class RobotCommand
     {
+        private const int BATTERY_COST_TURN = 1;
+        private const int BATTERY_COST_MOVE = 2;
+        private const int BATTERY_COST_CLEAN = 5;
+
         private RobotPosition robotPos;
         private int battery;
         private Command cmd;
         private CleaningResult cleaningResult;
-        private List<List<CellStatus>> map;           
+        private List<List<CellStatus>> map;
 
         public RobotCommand(RobotPosition robotPos, Command cmd, CleaningResult cleaningResult, List<List<CellStatus>> map, int battery)
         {
@@ -47,6 +51,9 @@
 
         private void TurnLeft()
         {
+            if (battery < BATTERY_COST_TURN)
+                return;
+
             switch (robotPos.Facing)
             {
                 case Facing.N:
@@ -62,12 +69,12 @@
                     robotPos.Facing = Facing.N;
                     break;
             }
-            battery--;
+            battery -= BATTERY_COST_TURN;
         }
 
         private void TurnRight()
         {
-            if (battery < 1)
+            if (battery < BATTERY_COST_TURN)
                 return;
 
             switch (robotPos.Facing)
@@ -85,14 +92,14 @@
                     robotPos.Facing = Facing.N;
                     break;
             }
-            battery--;
+            battery -= BATTERY_COST_TURN;
         }
 
         private RobotPosition? Advance()
         {
             RobotPosition nextPos = new RobotPosition(robotPos);
             
-            if (battery < 2)
+            if (battery < BATTERY_COST_MOVE)
                 return null;
 
             switch (robotPos.Facing)
@@ -111,13 +118,13 @@
                     break;
             }
 
-            battery = battery - 2;
+            battery -= BATTERY_COST_MOVE;
             return nextPos;
         }
 
         private RobotPosition? Back()
         {
-            if (battery < 2)
+            if (battery < BATTERY_COST_MOVE)
                 return null;
 
             RobotPosition nextPos = new RobotPosition(robotPos);
@@ -137,20 +144,18 @@
                     break;
             }
 
-            battery = battery - 2;
+            battery -= BATTERY_COST_MOVE;
             return nextPos;
         }
 
         private void CleanCell()
         {
-            if (battery >= 5)     //map[robotPos.Y][robotPos.X] == CellStatus.S  -check if cell was cleaned before
+            if (battery >= BATTERY_COST_CLEAN)     //map[robotPos.Y][robotPos.X] == CellStatus.S  -check if cell was cleaned before
             {
-                battery = battery - 5;
+                battery -= BATTERY_COST_CLEAN;
                 map[robotPos.Y][robotPos.X] = CellStatus.D;
                 Cell cell = new Cell(robotPos);
-
-                if (cleaningResult.Cleaned.All(c => c.X != cell.X || c.Y != cell.Y))
-                    cleaningResult.Cleaned.Push(new Cell(robotPos));
+                cleaningResult.AddCleaned(cell);
             }
         }
     }
